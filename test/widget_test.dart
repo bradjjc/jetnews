@@ -16,16 +16,19 @@ void main() {
 
 
       test('http 통신 테스트', () async {
-
+        List<NewsInfo> newsInfo = [];
         var uri = Uri.parse(
             'https://github.com/junsuk5/mock_json/blob/main/jetnews/posts.json');
         var response = await http.get(uri);
         expect(response.statusCode, 200);
 
         // NewsInfo newsInfo = NewsInfo.fromJson(jsonDecode(json.encode(response.body)));
-        Future<List<NewsInfo>> news = json.decode(response.body).map((el) => NewsInfo.fromJson(el)).toList();
+        List<NewsInfo> apiData = (json.decode(response.body) as List).map((el) => NewsInfo.fromJson(el)).toList();
+        newsInfo.addAll(apiData);
 
-        // expect(, "dc523f0ed25c");
+        // List<NewsInfo> newsInfo = (json.decode(response.body) as List).map((el) => NewsInfo.fromJson(el)).toList();
+
+        expect(newsInfo[0]["id"] , "dc523f0ed25c");
       });
 
     }

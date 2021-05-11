@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jetnews/ui/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,13 +17,5 @@ class MyApp extends StatelessWidget {
       ),
       home: Home(),
     );
-  }
-}
-class Home extends StatelessWidget {
-  const Home({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
