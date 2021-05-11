@@ -1,6 +1,27 @@
-
-
 class NewsInfo {
+  List<Result> result;
+
+  NewsInfo({this.result});
+
+  NewsInfo.fromJson(Map<String, dynamic> json) {
+    if (json['result'] != null) {
+      result = [];
+      json['result'].forEach((v) {
+        result.add(new Result.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    if (this.result != null) {
+      data['result'] = this.result.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Result {
   String id;
   int imageId;
   int imageThumbId;
@@ -11,7 +32,7 @@ class NewsInfo {
   String title;
   String url;
 
-  NewsInfo(
+  Result(
       {this.id,
         this.imageId,
         this.imageThumbId,
@@ -22,10 +43,7 @@ class NewsInfo {
         this.title,
         this.url});
 
-
-
-  NewsInfo.fromJson(Map<String, dynamic> json) {
-
+  Result.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     imageId = json['imageId'];
     imageThumbId = json['imageThumbId'];
@@ -70,7 +88,7 @@ class NewsInfo {
 class Metadata {
   Author author;
   String date;
-  num readTimeMinutes;
+  int readTimeMinutes;
 
   Metadata({this.author, this.date, this.readTimeMinutes});
 

@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jetnews/repository/news_repository.dart';
 import 'package:flutter_jetnews/ui/home.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+      MultiProvider(
+          providers: [
+            ChangeNotifierProvider<NewsRepositore>(create: (_) => NewsRepositore()),
+          ],
+          child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -12,9 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.red,
+          appBarTheme: AppBarTheme(backgroundColor: Color(0XFFCF233D))),
       home: Home(),
     );
   }
