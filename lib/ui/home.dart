@@ -20,6 +20,9 @@ class _HomeState extends State<Home> {
       body: Column(
         children: [
           Text('Top stories for you'),
+          Column(
+
+          ),
 
         ],
       ),
